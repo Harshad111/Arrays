@@ -1,0 +1,33 @@
+Given an array of positive numbers, the task is to find the number of possible contiguous subarrays having product less than a given number K.
+
+#include <iostream>
+using namespace std;
+int countSubArray(unsigned long long int arr[],unsigned long long int n,unsigned long long int k){
+    unsigned long long int start=0,end=0,res=0,product=1,length=0;
+    for(end=0;end<n;end++){
+        product*=arr[end];
+        while(start<end&&product>k){
+            product/=arr[start];
+            start+=1;
+        }
+        if(product<k){
+            length = end-start+1;
+            res += length; 
+        }
+    }
+    return res;
+    
+}
+int main() {
+    int t;
+    cin>>t;
+    while(t--){
+        unsigned long long int n,k;
+        cin>>n>>k;
+        unsigned long long int arr[n];
+        for(int i=0;i<n;i++)
+            cin>>arr[i];
+        cout<<countSubArray(arr,n,k)<<endl;
+    }
+	return 0;
+}
