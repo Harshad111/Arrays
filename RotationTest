@@ -1,0 +1,22 @@
+//Given a sorted array A of size N. The array is rotated 'K' times. Find the value of 'K'. The array may contain duplicate elements.
+#include<stdio.h>
+int main()
+{
+    int t;
+	scanf("%d",&t);
+	while(t--){
+	    int n,i,min,index=0;
+	    scanf("%d",&n);
+	    int arr[n];
+	    for(i=0;i<n;i++)
+	        scanf("%d",&arr[i]);
+	    min=arr[index];
+	    for(i=1;i<n-1;i++)
+	        if(arr[i]<min){
+	            min=arr[i];
+	            index=i;
+	        }
+	    printf("%d\n",index);
+	}
+	return 0;
+}
